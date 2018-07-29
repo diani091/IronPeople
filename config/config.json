@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "",
+    "database": "nudestudio",
     "host": "localhost",
     "dialect": "mysql"
   },
