@@ -6,7 +6,8 @@ module.exports = function (app) {
   //HTML route to show all collections
   app.get("/collections", function (req, res) {
     db.Products.findAll({}).then(function (collections) {
-      res.json(collections);
+      console.log(collections);
+      res.render("index", { clothes: collections });
     });
   });
 

@@ -69,14 +69,14 @@
             <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
             </a>
             <ul id="example-list" class="list-group">
-              {{#each Products}}
-              <li data-id="{{this.id}}" class="list-group-item">
-                <a href="example/{{this.id}}">{{this.type}}</a>
+              {{#each clothes}}
+              <li data-id="{{this.dataValues.id}}" class="list-group-item">
+                <a href="example/{{this.dataValues.id}}">{{this.dataValues.type}}</a>
                 <button class="btn btn-danger float-right delete">ｘ</button>
               </li>
             </ul>
             <span class="block2-price m-text6 p-r-5">
-              {{this.cost}}
+              {{this.dataValues.regular_price}}
             </span>
 
             <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
