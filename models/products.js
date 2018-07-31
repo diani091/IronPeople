@@ -12,7 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     pre_order: DataTypes.INTEGER
   }, {});
   Products.associate = function(models) {
-    // associations can be defined here
+    models.Carts.belongsToMany(models.Products,
+    {
+      through: "productCart",
+      as:"products",
+      foreignkey: "id",
+    });
   };
   return Products;
 };

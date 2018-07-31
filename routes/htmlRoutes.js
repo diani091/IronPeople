@@ -3,9 +3,18 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(nudestudio) {
+    db.Products.findAll({}).then(function(nudestudio) {
       res.render("index", {
-        examples: dbExamples
+        Products: nudestudio
+      });
+    });
+  });
+
+
+  app.get("/cart/add-product/:id", function(req, res) {
+    db.Cart.create({}).then(function(nudestudio) {
+      res.render("index", {
+        Products: nudestudio
       });
     });
   });
@@ -14,15 +23,15 @@ module.exports = function(app) {
   app.get("/shop", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(nudestudio) {
       res.render("shop", {
-        example: dbExample
+        example: nudestudio
       });
     });
   });
 
   app.get("/shop/vestidos", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(nudestudio) {
+    db.Products.findAll({ where: { type: "vestidos" } }).then(function(nudestudio) {
       res.render("/shop/vestidos", {
-        example: dbExample
+        products: nudestudio
       });
     });
   });
@@ -30,7 +39,7 @@ module.exports = function(app) {
   app.get("/shop/tops", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(nudestudio) {
       res.render("/shop/tops", {
-        example: dbExample
+        example: nudestudio
       });
     });
   });
@@ -38,7 +47,7 @@ module.exports = function(app) {
   app.get("/shop/shorts*faldas", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(nudestudio) {
       res.render("/shop/shorts*faldas", {
-        example: dbExample
+        example: nudestudio
       });
     });
   });
@@ -46,7 +55,7 @@ module.exports = function(app) {
   app.get("/shop/rompers*jumpsuits", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(nudestudio) {
       res.render("/shop/rompers*jumpsuits", {
-        example: dbExample
+        example: nudestudio
       });
     });
   });
@@ -54,7 +63,7 @@ module.exports = function(app) {
   app.get("/sale", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(nudestudio) {
       res.render("/sale", {
-        example: dbExample
+        example: nudestudio
       });
     });
   });
@@ -62,7 +71,7 @@ module.exports = function(app) {
   app.get("/nuevo", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(nudestudio) {
       res.render("/nuevo", {
-        example: dbExample
+        example: nudestudio
       });
     });
   });
