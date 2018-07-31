@@ -4,13 +4,11 @@
 <head>
    <meta charset="utf-8">
 <!--===============================================================================================-->
-<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="./HW/IronPeople/public/styles/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="./HW/IronPeople/public/styles/styles.css">
-    <link rel="stylesheet" type="text/css" href="./HW/IronPeople/public/styles/util.css">
+<link rel="stylesheet" type="text/css" href="../../public/styles/styles.css">
+<link rel="stylesheet" type="text/css" href="../../public/styles/util.css">
 
   <title>Home Page</title>
 </head>
@@ -18,5 +16,13 @@
 <body>
   {{{body}}}
 </body>
+<script type="text/javascript">
+		$('.block2-btn-addcart').each(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to cart !", "success");
+			});
+		});
+	</script>
 
 </html>
