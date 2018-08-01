@@ -3,7 +3,7 @@
 //
 // ******************************************************************************
 
-
+//Configuration
 var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
 
@@ -22,7 +22,8 @@ passport.use(new LocalStrategy(
   }
 ));
 
-
+//Middleware - In a Connect or Express-based application, passport.initialize() middleware is required to initialize Passport. 
+//If your application uses persistent login sessions, passport.session() middleware must also be used.
 app.configure(function() {
     app.use(express.static('public'));
     app.use(express.cookieParser());
@@ -34,6 +35,22 @@ app.configure(function() {
   });
 
 
+//Sessions - Each subsequent request will not contain credentials, 
+//but rather the unique cookie that identifies the session. 
+//In order to support login sessions, Passport will serialize and deserialize user instances to and from the session.
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+  
+  passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+      done(err, user);
+    });
+  });
+
+
+// Route - The login form is submitted to the server via the POST method. 
+//Using authenticate() with the local strategy will handle the login request.
   app.post('/login',
   passport.authenticate('local', { successRedirect: '/',
                                    failureRedirect: '/login',
@@ -41,10 +58,21 @@ app.configure(function() {
 );
 
 
+// Parameters - By default, LocalStrategy expects to find credentials 
+//in parameters named username and password.
+//If your site prefers to name these fields differently,
+//options are available to change the defaults.
+passport.use(new LocalStrategy({
+  usernameField: 'email',
+  passwordField: 'passwd'
+},
+function(username, password, done) {
+  // ...
+}
+));
 
 
 /* PASSPORT SAYS: "A form is placed on a web page, allowing the user to enter their credentials and log in."
-
 <form action="/login" method="post">
     <div>
         <label>Username:</label>
@@ -58,5 +86,4 @@ app.configure(function() {
         <input type="submit" value="Log In"/>
     </div>
 </form>
-
 */
