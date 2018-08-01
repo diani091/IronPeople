@@ -11,7 +11,7 @@ module.exports = function (app) {
 
   //Main HTML route FALTA AGREGAR QUE NADA MAS MANDE 4
   app.get("/", function (req, res) {
-    db.Products.findAll({ limit: 3 }).then(function (collections) {
+    db.Products.findAll({ limit: 4 }).then(function (collections) {
       res.render("index", { clothes: collections });
     });
   });
