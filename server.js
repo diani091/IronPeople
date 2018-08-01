@@ -22,7 +22,7 @@ var db = require("./models");
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static("public"));
+app.use(express.static(__dirname, "/public/s"));
 
 // Handlebars
 app.engine(
@@ -34,8 +34,7 @@ app.set("view engine", "handlebars");
 
 // Routes
 // =============================================================
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+require("./routes/Routes")(app);
 
 var syncOptions = { force: false };
 
