@@ -1,11 +1,9 @@
 var db = require("../models");
 
-module.exports = function (app) {
-
-
+module.exports = function(app){
   //HTML route to show all collections
-  app.get("/collections", function (req, res) {
-    db.Products.findAll({}).then(function (collections) {
+  app.get("/", function(req, res) {
+    db.Products.findAll({}).then(function(collections) {
       console.log(collections);
       res.render("index", { clothes: collections });
     });
