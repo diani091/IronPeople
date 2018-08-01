@@ -2,27 +2,126 @@
 <html>
 
 <head>
-   <meta charset="utf-8">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="./HW/IronPeople/public/styles/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<!--===============================================================================================-->
-<link rel="stylesheet" type="text/css" href="../../public/styles/styles.css">
-<link rel="stylesheet" type="text/css" href="../../public/styles/util.css">
+  <meta charset="utf-8">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="/styles/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="styles/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="styles/css/util.css">
 
   <title>Home Page</title>
 </head>
 
 <body>
+
+  <header class="header1">
+    <!-- Header desktop -->
+    <div class="container-menu-header">
+      <div class="topbar">
+
+        <span class="topbar-child1">
+          Buy Online. Pick Up at Store!
+        </span>
+
+        <div class="topbar-child2">
+          <span class="topbar-email">
+            shop@nudestudio.com
+          </span>
+
+          <div class="topbar-language rs1-select2">
+            <select class="selection-1" name="time">
+              <option>USD</option>
+              <option>MXN</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="wrap_header">
+        <!-- Logo -->
+        <a href="index.html" class="logo">
+          <img src="/images/Logo Nude.png" alt="IMG-LOGO">
+        </a>
+
+        <!-- Menu -->
+        <div class="wrap_menu">
+          <nav class="menu">
+            <ul class="main_menu">
+              <li>
+                <a href="index.html">Home</a>
+                <ul class="sub_menu">
+                  <li>
+                    <a href="index.html">Homepage V1</a>
+                  </li>
+                  <li>
+                    <a href="home-02.html">Homepage V2</a>
+                  </li>
+                  <li>
+                    <a href="home-03.html">Homepage V3</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="sale-noti">
+                <a href="/">Shop</a>
+              </li>
+
+              <li>
+                <a href="cart.html">Sale</a>
+              </li>
+
+              <li>
+                <a href="blog.html">New</a>
+              </li>
+              <li>
+                <a href="blog.html">Sales</a>
+              </li>
+              <li>
+                <a href="blog.html">Stock</a>
+              </li>
+              <li>
+                <a href="blog.html">Edit Stock</a>
+              </li>
+              <li>
+                <a href="blog.html">Add Stock</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+  </header>
+
   {{{body}}}
+
+
+  <footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
+    <div class="flex-w p-b-90">
+      <div class="w-size6 p-t-30 p-l-15 p-r-15 respon3">
+        <h4 class="s-text12 p-b-30">
+          GET IN TOUCH
+        </h4>
+
+        <div>
+          <p class="s-text7 w-size27">
+            Any questions? Let us know shop@nudestudio.com
+          </p>
+
+          <div class="flex-m p-t-30">
+            <a href="#" class="fs-18 color1 p-r-20 fa fa-facebook"></a>
+            <a href="#" class="fs-18 color1 p-r-20 fa fa-instagram"></a>
+            <a href="#" class="fs-18 color1 p-r-20 fa fa-pinterest-p"></a>
+            <a href="#" class="fs-18 color1 p-r-20 fa fa-snapchat-ghost"></a>
+            <a href="#" class="fs-18 color1 p-r-20 fa fa-youtube-play"></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="t-center s-text8 p-t-20">
+        Copyright © 2018 All rights reserved.
+      </div>
+    </div>
+  </footer>
 </body>
-<script type="text/javascript">
-		$('.block2-btn-addcart').each(function(){
-			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to cart !", "success");
-			});
-		});
-	</script>
 
 </html>

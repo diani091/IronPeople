@@ -1,83 +1,24 @@
-<header class="header1">
-  <!-- Header desktop -->
-  <div class="container-menu-header">
-    <div class="topbar">
-
-      <span class="topbar-child1">
-        Buy Online. Pick Up at Store!
-      </span>
-
-      <div class="topbar-child2">
-        <span class="topbar-email">
-          shop@nudestudio.com
-        </span>
-
-        <div class="topbar-language rs1-select2">
-          <select class="selection-1" name="time">
-            <option>USD</option>
-            <option>MXN</option>
-          </select>
-        </div>
-      </div>
-    </div>
-
-    <div class="wrap_header">
-      <!-- Logo -->
-      <a href="index.html" class="logo">
-        <img src="./HW/IronPeople/public/images/Logo Nude.png" alt="IMG-LOGO">
-      </a>
-
-      <!-- Menu -->
-      <div class="wrap_menu">
-        <nav class="menu">
-          <ul class="main_menu">
-            <li>
-              <a href="index.html">Home</a>
-              <ul class="sub_menu">
-                <li>
-                  <a href="index.html">Homepage V1</a>
-                </li>
-                <li>
-                  <a href="home-02.html">Homepage V2</a>
-                </li>
-                <li>
-                  <a href="home-03.html">Homepage V3</a>
-                </li>
-              </ul>
-            </li>
-
-            <li class="sale-noti">
-              <a href="product.html">Shop</a>
-            </li>
-
-            <li>
-              <a href="cart.html">Sale</a>
-            </li>
-
-            <li>
-              <a href="blog.html">New</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-
 
       <div class="container">
         <div class="row">
+           {{#each clothes}}
           <div class="col-4">
-            <img src="../public/images/img1.png" height="350px" width="250px" alt="IMG-PRODUCT">
+            <img src="/images/" + {{this.dataValues.id}} + ".png" height="380px" width="250px" alt="IMG-PRODUCT">
             <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
             </a>
             <ul id="example-list" class="list-group">
-              {{#each clothes}}
               <li data-id="{{this.dataValues.id}}" class="list-group-item">
                 <a href="example/{{this.dataValues.id}}">{{this.dataValues.type}}</a>
-                <button class="btn btn-danger float-right delete">ｘ</button>
               </li>
-            </ul>
-            <span class="block2-price m-text6 p-r-5">
+
+              <li class="list-group-item">
+                  <span class="block2-price m-text6 p-r-5">
               {{this.dataValues.regular_price}}
             </span>
+              </li>
+              
+            </ul>
+          
 
             <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
               Add to Cart
@@ -86,31 +27,3 @@
           </div>
         </div>
       </div>
-
-      <footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
-        <div class="flex-w p-b-90">
-          <div class="w-size6 p-t-30 p-l-15 p-r-15 respon3">
-            <h4 class="s-text12 p-b-30">
-              GET IN TOUCH
-            </h4>
-
-            <div>
-              <p class="s-text7 w-size27">
-                Any questions? Let us know shop@nudestudio.com
-              </p>
-
-              <div class="flex-m p-t-30">
-                <a href="#" class="fs-18 color1 p-r-20 fa fa-facebook"></a>
-                <a href="#" class="fs-18 color1 p-r-20 fa fa-instagram"></a>
-                <a href="#" class="fs-18 color1 p-r-20 fa fa-pinterest-p"></a>
-                <a href="#" class="fs-18 color1 p-r-20 fa fa-snapchat-ghost"></a>
-                <a href="#" class="fs-18 color1 p-r-20 fa fa-youtube-play"></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="t-center s-text8 p-t-20">
-            Copyright © 2018 All rights reserved.
-          </div>
-        </div>
-      </footer>
