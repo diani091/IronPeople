@@ -33,6 +33,7 @@ module.exports = function (app) {
   //HTML route for Sales
   app.get("/collections/sales", function (req, res) {
     db.Products.findAll({ where: { discount: 1 } }).then(function (salesCollections) {
+      console.log(salesCollections);
       res.render("index", { clothes: salesCollections });
     });
   });
