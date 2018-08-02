@@ -1,21 +1,26 @@
+// *****************************************************************************
+// ROUTES.JS - This file holds our app routes.
+// 
+// ******************************************************************************
+
+// Dependencies
 var db = require("../models");
 var Sequelize = require("sequelize");
 var Op = Sequelize.Op;
+var passport = require("passport");
 
+// Comment?
 module.exports = function (app) {
 
   //---------------------------------------------------------------------------
   //GET Routes
   //---------------------------------------------------------------------------
-
-
   //Main HTML route FALTA AGREGAR QUE NADA MAS MANDE 4
   app.get("/", function (req, res) {
     db.Products.findAll({ limit: 4 }).then(function (collections) {
       res.render("index", { clothes: collections });
     });
   });
-
 
   //HTML route to show all collections
   app.get("/collections", function (req, res) {
@@ -92,6 +97,16 @@ module.exports = function (app) {
   app.get("/login", function (req, res) {
     res.render("login");
   });
+
+  //Passport routes
+  app.post("/login", passport.authenticate('local', { failureRedirect: '/login' }),
+  function(req, res) {
+    //Just routing to this page in order to test the Passport function. Must ask team where to route user after login.
+    res.redirect('/collections/');
+  });
+
+
+
 
 
   //PENDIENTE HACER LOS DE POST Y UPDATE ya que eso es del admin y ahorita para que podamos jalar los collections para mostrar
