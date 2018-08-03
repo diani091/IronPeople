@@ -131,18 +131,24 @@
 
           <span class="linedivide1"></span>
 
-            <!-- Header cart noti -->
-              <ul class="header-cart-wrapitem">
-                <li class="header-cart-item">
-                  <a href="/bag" class="header-wrapicon1 dis-block">
-            <img src="/images/icon-header-02.png" class="header-icon1" alt="ICON">
-          </a>
+          <!-- Header cart noti -->
+          <ul class="header-cart-wrapitem">
+            <li class="header-cart-item">
+              <a href="/bag" class="header-wrapicon1 dis-block bag">
+                <img src="/images/icon-header-02.png" class="header-icon1" alt="ICON">
+              </a>
+              <span class="header-icons-noti bag-amount">
+               <!-- 0 -->
+              </span>
+            </li>
+          </ul>
   </header>
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
-    
-    {{{body}}}
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script> {{{body}}}
 
 
 
@@ -176,3 +182,9 @@
 </body>
 
 </html>
+
+<script>
+  $(function () {
+    $('[data-toggle="popover"]').popover()
+  })
+</script>
