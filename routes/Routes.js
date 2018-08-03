@@ -99,6 +99,10 @@ module.exports = function (app) {
     res.render("login");
   });
 
+  app.get("/bag", function (req, res) {
+    res.render("carrito");
+  });
+
   //Passport routes
   app.post("/login", passport.authenticate('local', { failureRedirect: '/login' }),
   function(req, res) {
