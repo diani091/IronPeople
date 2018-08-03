@@ -85,7 +85,6 @@ module.exports = function (app) {
     });
   });
 
-
   //HTML route for admin to view stock
   app.get("/admin/inventario", function (req, res) {
     db.Products.findAll({}).then(function (inventario) {
@@ -93,18 +92,18 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/admin/additem", function (req, res) {
+  app.get("/admin/nuevo-inventario", function (req, res) {
     db.Products.findAll({}).then(function (inventario) {
       res.render("nuevoinventario", { clothes: inventario });
     });
   });
-
+/*
   app.get("/admin/edititem", function (req, res) {
     db.Products.findAll({}).then(function (inventario) {
       res.render("modificarinventario", { clothes: inventario });
     });
   });
-
+*/
 
   //HTML route for admin to view stock
   app.get("/login", function (req, res) {
@@ -118,18 +117,19 @@ module.exports = function (app) {
   app.get("/admin", function (req, res) {
     res.render("admin");
   });
+
+
+
+
+
+
   //Passport routes
   app.post("/login", passport.authenticate('local', { failureRedirect: '/login' }),
   function(req, res) {
     //Just routing to this page in order to test the Passport function. Must ask team where to route user after login.
-    res.redirect('/collections/');
+    res.redirect('/admin');
   });
 
-
-
-
-
-  //PENDIENTE HACER LOS DE POST Y UPDATE ya que eso es del admin y ahorita para que podamos jalar los collections para mostrar
 
     // POST route for saving a into cart
     app.post("/bag", function(req, res) {
