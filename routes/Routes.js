@@ -112,5 +112,16 @@ module.exports = function (app) {
 
   //PENDIENTE HACER LOS DE POST Y UPDATE ya que eso es del admin y ahorita para que podamos jalar los collections para mostrar
 
+    // POST route for saving a into cart
+    app.post("/bag", function(req, res) {
+      console.log(req.body);
+      db.Bags.create({
+        cloth_id: req.body.id,
+        size: req.body.size
+      })
+        .then(function(bag) {
+          res.json(bag);
+        });
+    });
 
 };
