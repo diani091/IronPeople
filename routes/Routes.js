@@ -115,6 +115,9 @@ module.exports = function (app) {
     res.render("carrito");
   });
 
+  app.get("/admin", function (req, res) {
+    res.render("admin");
+  });
   //Passport routes
   app.post("/login", passport.authenticate('local', { failureRedirect: '/login' }),
   function(req, res) {
