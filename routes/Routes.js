@@ -52,12 +52,6 @@ module.exports = function (app) {
         res.render("index", { clothes: typeCollections });
       });
     }
-    // if Product Name
-    else {
-      db.Products.findOne({ where: { item_name: req.params.type }, include: [db.Sizes] }).then(function (name) {
-        res.render("id", { item: name });
-      });
-    }
    
   });
 
@@ -93,9 +87,7 @@ module.exports = function (app) {
   });
 
   app.get("/admin/nuevo-inventario", function (req, res) {
-    db.Products.findAll({}).then(function (inventario) {
       res.render("nuevoinventario", { clothes: inventario });
-    });
   });
 /*
   app.get("/admin/edititem", function (req, res) {

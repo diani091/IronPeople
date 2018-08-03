@@ -35,6 +35,16 @@
                 </ul>
             </div>
         </div>
-        <div class="col-sm-6 col-md-8 col-lg-9 p-b-50">AQUI VAN LAS VENTAS</div>
+        <div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
+            
+            {{#each clothes}}
+
+                <p>Id Products: {{this.dataValues.id_products}}</p>
+                <p>Size: {{this.dataValues.size}}</p>
+                <p>Price: $ {{this.dataValues.final_price}}</p>
+
+            {{/each}}
+
+        </div>
     </div>
 </div>
