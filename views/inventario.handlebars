@@ -4,13 +4,13 @@
             <div class="leftbar p-r-20 p-r-0-sm">
                 <!--  -->
                 <h4 class="m-text14 p-b-7">
-                  Admin Account
+                    Admin Account
                 </h4>
 
                 <ul class="p-b-54">
                     <li class="p-t-4">
                         <a href="/admin/ventas" class="s-text13 active1">
-                           Sales
+                            Sales
                         </a>
                     </li>
 
@@ -25,7 +25,7 @@
                             Add Items
                         </a>
                     </li>
-<!--
+                    <!--
                     <li class="p-t-4">
                         <a href="#" class="s-text13">
                             Edit Items
@@ -36,16 +36,39 @@
             </div>
         </div>
         <div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
+            <table class="table">
+                <thead class="thead-dark">
 
-            {{#each clothes}}
+                    <tr>
 
-                <p>Product Name: {{this.dataValues.item_name}}</p>
-                <p>Brand: {{this.dataValues.brand}}</p>
-                <p>Type: $ {{this.dataValues.type}}</p>
-                <p>Price: {{this.dataValues.final_price}}</p>
-            
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Brand</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {{#each clothes}}
 
-            {{/each}}
+                        <td>
+                            <p>{{this.dataValues.item_name}}</p>
+                        </td>
+                        <td>
+                            <p>{{this.dataValues.brand}}</p>
+                        </td>
+                        <td>
+                            <p>{{this.dataValues.type}}</p>
+                        </td>
+                        <td>
+                            <p>${{this.dataValues.final_price}}</p>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+
+
 
         </div>
     </div>
