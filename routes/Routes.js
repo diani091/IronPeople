@@ -93,13 +93,29 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/admin/additem", function (req, res) {
+    db.Products.findAll({}).then(function (inventario) {
+      res.render("nuevoinventario", { clothes: inventario });
+    });
+  });
+
+  app.get("/admin/edititem", function (req, res) {
+    db.Products.findAll({}).then(function (inventario) {
+      res.render("modificarinventario", { clothes: inventario });
+    });
+  });
+
 
   //HTML route for admin to view stock
   app.get("/login", function (req, res) {
     res.render("login");
   });
 
-  //Passport login route
+  app.get("/bag", function (req, res) {
+    res.render("carrito");
+  });
+
+  //Passport routes
   app.post("/login", passport.authenticate('local', { failureRedirect: '/login' }),
   function(req, res) {
     db.users.findAll(req.body,
@@ -116,4 +132,17 @@ module.exports = function (app) {
     });
   });  
   //PENDIENTE HACER LOS DE POST Y UPDATE ya que eso es del admin y ahorita para que podamos jalar los collections para mostrar
+
+    // POST route for saving a into cart
+    app.post("/bag", function(req, res) {
+      console.log(req.body);
+      db.Bags.create({
+        cloth_id: req.body.id,
+        size: req.body.size
+      })
+        .then(function(bag) {
+          res.json(bag);
+        });
+    });
+
 };
