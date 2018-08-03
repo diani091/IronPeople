@@ -99,18 +99,21 @@ module.exports = function (app) {
     res.render("login");
   });
 
-  //Passport routes
+  //Passport login route
   app.post("/login", passport.authenticate('local', { failureRedirect: '/login' }),
   function(req, res) {
-    //Just routing to this page in order to test the Passport function. Must ask team where to route user after login.
-    res.redirect('/collections/');
-  });
-
-
-
-
-
+    db.users.findAll(req.body,
+      { 
+        where: { 
+        exampleInputEmail1: req.body.exampleInputEmail1,
+        exampleInputPassword: req.body.exampleInputPassword1
+      }
+    })
+    //Just routing to "Sales/Ventas" page after login.
+    .then(function(dbusers) {
+      res.redirect('/admin/ventas/');
+      console.log("iron people logged in");
+    });
+  });  
   //PENDIENTE HACER LOS DE POST Y UPDATE ya que eso es del admin y ahorita para que podamos jalar los collections para mostrar
-
-
 };
