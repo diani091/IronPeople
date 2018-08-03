@@ -93,6 +93,18 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/admin/additem", function (req, res) {
+    db.Products.findAll({}).then(function (inventario) {
+      res.render("nuevoinventario", { clothes: inventario });
+    });
+  });
+
+  app.get("/admin/edititem", function (req, res) {
+    db.Products.findAll({}).then(function (inventario) {
+      res.render("modificarinventario", { clothes: inventario });
+    });
+  });
+
 
   //HTML route for admin to view stock
   app.get("/login", function (req, res) {
