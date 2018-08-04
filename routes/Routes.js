@@ -137,10 +137,12 @@ module.exports = function (app) {
     });
 
 
+  app.post("/api/ventas", function(req, res) { console.log(req.body); res.json("ok"); });
+
   // POST route for saving a new sale
-  app.post("/api/ventas", function (req, res) {
-    console.log(req.body);
-   //for (i = 0; i < req.body.length; i++) {
+  //app.post("/api/ventas", function (req, res) {
+   // console.log(req.body);
+   /*for (i = 0; i < req.body.length; i++) {
     db.Ventas.create({
       id_products: req.body.id_products,
       size: req.body.size,
@@ -149,7 +151,7 @@ module.exports = function (app) {
       .then(function (ventas) {
         res.json(ventas);
       });
-   // }
-  });
+    } */
+  //});
 
 };

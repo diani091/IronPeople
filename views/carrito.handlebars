@@ -107,13 +107,13 @@
 
 
 		$(document).on("click", "#buy", function () {
-
+			event.preventDefault();
 
 			var storageData = JSON.parse(sessionStorage.getItem("product"));
+			//console.log(storageData);
+			//var nuevaVenta = [];
 
-			var nuevaVenta = [];
-
-			for (i = 0; i < storageData.length; i++) {
+			/*for (i = 0; i < storageData.length; i++) {
 				var storage = {
 					id_products: storageData[i].id,
 					size: storageData[i].size,
@@ -121,16 +121,25 @@
 				}
 				nuevaVenta.push(storage);
 				console.log(nuevaVenta);
-			}
-			console.log(nuevaVenta);
+			}*/
+			//console.log(nuevaVenta);
 
-			$.post("/api/ventas/", nuevaVenta, function () {
-				
-				sessionStorage.removeItem("product");
-				console.log(nuevaVenta);
+			$.ajax({
+				method: "POST",
+				url: "/api/ventas",
+				data: storageData
+			})
+				.then(function () {
+					sessionStorage.removeItem("product");
+					console.log("HOLA");
+					//window.location.href = "/";
+				});
 
-				//window.location.href = "/thankyou";
-			});
+			
+			//console.log(nuevaVenta);
+
+			//window.location.href = "/thankyou";
+
 
 
 		});
