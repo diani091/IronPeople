@@ -123,16 +123,17 @@ module.exports = function (app) {
   });
 
 
-    // POST route for saving a into cart
-    app.post("/bag", function(req, res) {
-      console.log(req.body);
-      db.Bags.create({
-        cloth_id: req.body.id,
-        size: req.body.size
-      })
-        .then(function(bag) {
-          res.json(bag);
-        });
-    });
+  // POST route for saving a new post
+  app.post("/api/ventas", function(req, res) {
+    console.log(req.body);
+    db.Ventas.create({
+      id_products: req.body.id_products,
+      size: req.body.size,
+      final_price: req.body.finalprice
+    })
+      .then(function(ventas) {
+        res.json(ventas);
+      });
+  });
 
 };

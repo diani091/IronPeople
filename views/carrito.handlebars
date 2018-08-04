@@ -67,18 +67,19 @@
 
 		$(document).on("click", ".btn", removeProduct);
 
-		function removeProduct(event) {
-			var productToRemove = event.currentTarget.id;
-			var storageData = JSON.parse(sessionStorage.getItem("product"));
-			storageData.splice(productToRemove, 1);
-			sessionStorage.setItem("product", JSON.stringify(storageData));
+			function removeProduct(event) {
+				var productToRemove = event.currentTarget.id;
+				var storageData = JSON.parse(sessionStorage.getItem("product"));
+				storageData.splice(productToRemove, 1);
+				sessionStorage.setItem("product", JSON.stringify(storageData));
 
-			$(".table-row").remove();
-			showProducts();
+				$(".table-row").remove();
+				showProducts();
 
-		}
+			}
 
 
+		
 
 
 
