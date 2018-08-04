@@ -110,8 +110,17 @@ module.exports = function (app) {
     res.render("admin");
   });
 
-
-
+  //HTML route for chart
+  app.get("/chart", function (req, res) {
+    db.Ventas.findAll({
+      attributes: ['id_products',
+      [db.sequelize.fn('sum', db.sequelize.col('final_price')), 'final_price']],
+      group: ['id_products']}).then(function (ventas)
+      {
+       console.log(ventas); 
+        res.render("ventas", {clothes: ventas});
+     });
+  });
 
 
 
