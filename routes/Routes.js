@@ -87,7 +87,7 @@ module.exports = function (app) {
   });
 
   app.get("/admin/nuevo-inventario", function (req, res) {
-      res.render("nuevoinventario", { clothes: inventario });
+      res.render("nuevoinventario");
   });
 /*
   app.get("/admin/edititem", function (req, res) {
