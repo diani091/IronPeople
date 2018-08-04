@@ -90,7 +90,6 @@
 
 		showProducts();
 
-
 		$(document).on("click", ".btn", function () {
 
 
@@ -105,45 +104,16 @@
 
 		});
 
-
 		$(document).on("click", "#buy", function () {
 			event.preventDefault();
 
-			var storageData = JSON.parse(sessionStorage.getItem("product"));
-			//console.log(storageData);
-			//var nuevaVenta = [];
-
-			/*for (i = 0; i < storageData.length; i++) {
-				var storage = {
-					id_products: storageData[i].id,
-					size: storageData[i].size,
-					final_price: storageData[i].price
-				}
-				nuevaVenta.push(storage);
-				console.log(nuevaVenta);
-			}*/
-			//console.log(nuevaVenta);
-
 			$.ajax({
-				method: "POST",
 				url: "/api/ventas",
-				data: storageData
-			})
-				.then(function () {
-					sessionStorage.removeItem("product");
-					console.log("HOLA");
-					//window.location.href = "/";
-				});
-
-			
-			//console.log(nuevaVenta);
-
-			//window.location.href = "/thankyou";
-
-
-
+				method: "POST",
+				data: { bagData: sessionStorage.getItem("product") }
+			}).then(function() {
+				sessionStorage.removeItem("product");
+			});
 		});
-
-
 	});
 </script>

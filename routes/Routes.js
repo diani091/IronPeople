@@ -137,21 +137,30 @@ module.exports = function (app) {
     });
 
 
-  app.post("/api/ventas", function(req, res) { console.log(req.body); res.json("ok"); });
+
 
   // POST route for saving a new sale
-  //app.post("/api/ventas", function (req, res) {
-   // console.log(req.body);
-   /*for (i = 0; i < req.body.length; i++) {
-    db.Ventas.create({
-      id_products: req.body.id_products,
-      size: req.body.size,
-      final_price: req.body.final_price
-    })
-      .then(function (ventas) {
-        res.json(ventas);
+  app.post("/api/ventas", function (req, res) {
+    var bagItems = JSON.parse(req.body.bagData);
+    for(var index = 0; index < bagItems.length; index++) {
+      db.Ventas.create({
+        id_products: bagItems[index].id,
+        size: bagItems[index].size,
+        final_price: bagItems[index].price
+      }).then(function (ventas) {
+        db.Sizes.findOne({ where: { ProductId: ventas.id_products, size: ventas.size } }).then(function(stock) {
+          console.log(stock.quantity);
+          var newQuantity = stock.quantity - 1;
+          db.Sizes.update(
+            { quantity: newQuantity },
+            { where: { ProductId: ventas.id_products, size: ventas.size }}
+          ).then(function(updatedData) {
+            res.json(ventas);
+          })
+        });
+        
       });
-    } */
-  //});
+    }
+  });
 
 };
