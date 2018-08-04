@@ -35,6 +35,39 @@
                 </ul>
             </div>
         </div>
-        <div class="col-sm-6 col-md-8 col-lg-9 p-b-50">AQUI VA LA TABLA DE JAVIER...</div>
+        <div class="col-sm-6 col-md-8 col-lg-9 p-b-50">AQUI VA LA TABLA DE JAVIER...
+
+
+
+<div id="chart_div"></div>
+         
+    <!--Load the AJAX API-->
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        
+        data.addRows([
+          {{#each clothes}}
+            ["{{this.dataValues.id_products}} ", {{this.dataValues.final_price}}],
+          {{/each}}
+        ]);
+
+
+
+        </div>
     </div>
 </div>
