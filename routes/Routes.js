@@ -52,13 +52,13 @@ module.exports = function (app) {
         res.render("index", { clothes: typeCollections });
       });
     }
-   
+
   });
 
 
   //HTML route for Sales and types
   app.get("/collections/sales/:type", function (req, res) {
-    db.Products.findAll({ where: { discount:  { [Op.gt]: 0 }, type: req.params.type }, include: [db.Sizes] }).then(function (salesTypeCollections) {
+    db.Products.findAll({ where: { discount: { [Op.gt]: 0 }, type: req.params.type }, include: [db.Sizes] }).then(function (salesTypeCollections) {
       res.render("index", { clothes: salesTypeCollections });
     });
   });
@@ -87,15 +87,15 @@ module.exports = function (app) {
   });
 
   app.get("/admin/nuevo-inventario", function (req, res) {
-      res.render("nuevoinventario");
+    res.render("nuevoinventario");
   });
-/*
-  app.get("/admin/edititem", function (req, res) {
-    db.Products.findAll({}).then(function (inventario) {
-      res.render("modificarinventario", { clothes: inventario });
+  /*
+    app.get("/admin/edititem", function (req, res) {
+      db.Products.findAll({}).then(function (inventario) {
+        res.render("modificarinventario", { clothes: inventario });
+      });
     });
-  });
-*/
+  */
 
   //HTML route for admin to view stock
   app.get("/login", function (req, res) {
@@ -106,43 +106,50 @@ module.exports = function (app) {
     res.render("carrito");
   });
 
-  app.get("/admin", function (req, res) {
-    res.render("admin");
+  app.get("/thankyou", function (req, res) {
+    res.render("thankyou");
   });
+  /*
+    app.get("/admin", function (req, res) {
+      res.render("admin");
+    });
+  */
 
   //HTML route for chart
-  app.get("/chart", function (req, res) {
+  app.get("/admin", function (req, res) {
     db.Ventas.findAll({
       attributes: ['id_products',
-      [db.sequelize.fn('sum', db.sequelize.col('final_price')), 'final_price']],
-      group: ['id_products']}).then(function (ventas)
-      {
-       console.log(ventas); 
-        res.render("ventas", {clothes: ventas});
-     });
+        [db.sequelize.fn('sum', db.sequelize.col('final_price')), 'final_price']],
+      group: ['id_products']
+    }).then(function (ventas) {
+      console.log(ventas);
+      res.render("admin", { clothes: ventas });
+    });
   });
 
 
 
   //Passport routes
   app.post("/login", passport.authenticate('local', { failureRedirect: '/login' }),
-  function(req, res) {
-    //Just routing to this page in order to test the Passport function. Must ask team where to route user after login.
-    res.redirect('/admin');
-  });
+    function (req, res) {
+      //Just routing to this page in order to test the Passport function. Must ask team where to route user after login.
+      res.redirect('/admin');
+    });
 
 
-  // POST route for saving a new post
-  app.post("/api/ventas", function(req, res) {
+  // POST route for saving a new sale
+  app.post("/api/ventas", function (req, res) {
     console.log(req.body);
+   //for (i = 0; i < req.body.length; i++) {
     db.Ventas.create({
       id_products: req.body.id_products,
       size: req.body.size,
-      final_price: req.body.finalprice
+      final_price: req.body.final_price
     })
-      .then(function(ventas) {
+      .then(function (ventas) {
         res.json(ventas);
       });
+   // }
   });
 
 };
