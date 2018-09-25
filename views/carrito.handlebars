@@ -24,15 +24,41 @@
 		</div>
 
 
-
+		<!--
 		<div class="bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
 			<div class="size15 trans-0-4">
-				<!-- Button -->
-				<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+				<!-- Button 
+				<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" id="buy">
 					BUY
 				</button>
 			</div>
 		</div>
+-->
+		<div class="bo9 w-size18 p-l-40 p-r-40 p-t-30 p-b-38 m-t-30 m-r-0 m-l-auto p-lr-15-sm">
+			<div class="size15 trans-0-4">
+				<!-- Button trigger modal -->
+				<button type="button" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4" id="buy" data-id="{{this.dataValues.id}}"
+				 data-toggle="modal" data-target="#exampleModalCenter">
+					BUY
+				</button>
+			</div>
+		</div>
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-body">
+						Thank you for your purchase!
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
 	</div>
 </section>
 
@@ -64,10 +90,9 @@
 
 		showProducts();
 
+		$(document).on("click", ".btn", function () {
 
-		$(document).on("click", ".btn", removeProduct);
 
-		function removeProduct(event) {
 			var productToRemove = event.currentTarget.id;
 			var storageData = JSON.parse(sessionStorage.getItem("product"));
 			storageData.splice(productToRemove, 1);
@@ -76,11 +101,19 @@
 			$(".table-row").remove();
 			showProducts();
 
-		}
 
+		});
 
+		$(document).on("click", "#buy", function () {
+			event.preventDefault();
 
-
-
+			$.ajax({
+				url: "/api/ventas",
+				method: "POST",
+				data: { bagData: sessionStorage.getItem("product") }
+			}).then(function() {
+				sessionStorage.removeItem("product");
+			});
+		});
 	});
 </script>

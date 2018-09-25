@@ -1276,20 +1276,9 @@ li.sale-noti > a {
 }
 
 @media (max-width: 992px){
-  .wrap_header_mobile {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex !important;
-  }
-
-  .top-bar {display: none;}
-  header {height: auto !important;}
-
-  .container1-page {
-    margin-left: 0px;
-  }
+.topbar {
+  display: none;
+}
 }
 
 
