@@ -24,7 +24,7 @@
     "passport-local": "^1.0.0",
     "pg": "^7.4.3",
     "popper.js": "^1.14.4",
-    "sequelize": "3.9",
+    "sequelize": "^4.38.0",
     "tooltip.js": "^1.2.0"
   },
   "devDependencies": {
