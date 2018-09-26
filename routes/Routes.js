@@ -17,11 +17,10 @@ module.exports = function (app) {
   //---------------------------------------------------------------------------
   //Main HTML route FALTA AGREGAR QUE NADA MAS MANDE 4
   app.get("/", function (req, res) {
-    db.Products.findAll({ where: { pre_order: { [Op.gt]: 0 } }, include: [db.Sizes] }).then(function (typeCollections) {
-      res.render("index", { clothes: typeCollections });
-    });
-  });
-
+    res.render("intro");
+   });
+ 
+ 
   //HTML route to show all collections
   app.get("/collections", function (req, res) {
     db.Products.findAll({ include: [db.Sizes] }).then(function (collections) {
